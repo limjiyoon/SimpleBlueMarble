@@ -13,6 +13,12 @@ const DiceAttribute = {
   offset: 0.23,
 }
 
+// function throwDice(api) {
+//   api.applyImpulse([1, 1, 1], [0, 1, 0])
+//   // api.velocity.set(0, 10, 0)
+//   // api.angularVelocity.set(1, 0, 1)
+// }
+
 
 export default function Dice({position=[0,0,0], scale=[1,1,1], rotation=[0,0,0]}: {
   position: [x: number, y: number, z: number]
@@ -26,16 +32,15 @@ export default function Dice({position=[0,0,0], scale=[1,1,1], rotation=[0,0,0]}
     position: position
   }));
   return (
-    <>
       <group
         ref={groupMesh}
         receiveShadow
         castShadow
-        // onClick={() => {
-        //     api.angularVelocity.set(10, 0, 10)
-        //     api.velocity.set(0, 10, 0)
-        //   }
-        // }
+        onClick={() => {
+            api.angularVelocity.set(10, 0, 10)
+            api.velocity.set(0, 10, 0)
+          }
+        }
       >
         <mesh
           scale={scale}
@@ -51,7 +56,6 @@ export default function Dice({position=[0,0,0], scale=[1,1,1], rotation=[0,0,0]}
           <meshBasicMaterial color={"black"}/>
         </mesh>
       </group>
-    </>
   )
 }
 
