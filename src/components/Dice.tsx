@@ -2,7 +2,6 @@ import {useBox} from "@react-three/cannon";
 import * as THREE from "three";
 import * as BufferGeometryUtils from "three/addons/utils/BufferGeometryUtils.js";
 import {BoxGeometry, BufferGeometry} from "three";
-import React from "react";
 
 
 const DiceAttribute = {
@@ -60,7 +59,7 @@ export default function Dice({position=[0,0,0], scale=[1,1,1], rotation=[0,0,0]}
 }
 
 function MyDiceGeometry() {
-  let boxGeometry: BufferGeometry = new THREE.BoxGeometry(1, 1, 1, DiceAttribute.segments, DiceAttribute.segments, DiceAttribute.segments);
+  let boxGeometry: BufferGeometry = new BoxGeometry(1, 1, 1, DiceAttribute.segments, DiceAttribute.segments, DiceAttribute.segments);
   const subCubeHalfSize = 0.5 - DiceAttribute.edgeRadius;
   const positionAttirubte = boxGeometry.getAttribute("position")
   const notchWave = (v: number) => {
