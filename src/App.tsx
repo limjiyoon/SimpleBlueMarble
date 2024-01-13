@@ -9,20 +9,22 @@ import {useRef} from "react";
 import {Group} from "three";
 
 
-function DiceGroup() {
+function DiceGroup(numberOfDice: number) {
   const diceGroupRef= useRef<Group>(null)
-  return (
-    <group ref={diceGroupRef}>
+
+  const dices = [...Array(numberOfDice)].map((_, idx) => {
+    return (
       <Dice
-        position={[0, 5, 0]}
+        position={[0, 5 + idx, 0]}
         rotation={[0.4, 0.24, 0.15]}
         scale={[1, 1, 1]}
       />
-      <Dice
-        position={[0.1, 6, 0]}
-        rotation={[0.0, 0.0, 0.0]}
-        scale={[1, 1, 1]}
-      />
+    )
+
+  })
+  return (
+    <group ref={diceGroupRef}>
+      {dices}
     </group>
   )
 
@@ -38,11 +40,11 @@ export function App() {
           position: [0, 10, 10],
         }}
       >
-        {/*<ambientLight />*/}
+        <ambientLight />
         <PointLight/>
         <Physics gravity={[0, -9.81, 0]}>
           <Ground scale={groundSize}/>
-          <DiceGroup/>
+          {DiceGroup(2)}
         </Physics>
         <OrbitControls />
         <axesHelper args={[groundSize.width]} />
