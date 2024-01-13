@@ -18,11 +18,11 @@ function DiceGroup() {
         rotation={[0.4, 0.24, 0.15]}
         scale={[1, 1, 1]}
       />
-      {/*<Dice*/}
-      {/*  position={[0.1, 6, 0]}*/}
-      {/*  rotation={[0.0, 0.0, 0.0]}*/}
-      {/*  scale={[1, 1, 1]}*/}
-      {/*/>*/}
+      <Dice
+        position={[0.1, 6, 0]}
+        rotation={[0.0, 0.0, 0.0]}
+        scale={[1, 1, 1]}
+      />
     </group>
   )
 
